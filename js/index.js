@@ -4,9 +4,9 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://test.visietest.nl/zppc/', //@todo: change it to the appropriate.
-    api_page: 'api/json/read/pages',
-    api_pagesum: 'api/json/read/pagesum',
+    remote: 'http://www.zppc.nl/appserver/api.php/api/json/read/', //@todo: change it to the appropriate.
+    api_page: 'pages',
+    api_pagesum: 'pagesum',
     folder: 'zppc',
     cacheFile: 'pages.json',
     initialize: function()
@@ -52,7 +52,7 @@ var app =
             function (locale) 
             {
                 //Add the language when it is available.
-                app.lang = locale.value;
+                //app.lang = locale.value; //nah never mind.
                 app.api_page += '?lang=' + app.lang;
                 app.api_pagesum += '?lang=' + app.lang;
             },

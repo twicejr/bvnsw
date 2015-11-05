@@ -1,0 +1,2 @@
+Do: 
+  cordova restore plugins --experimental
