@@ -4,7 +4,7 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://www.zppc.nl/appserver/api.php/api/json/read/', //@todo: change it to the appropriate.
+    remote: 'http://192.168.1.7/testapp/server/api/json/read/', //@todo: change it to the appropriate.
     api_page: 'pages',
     api_pagesum: 'pagesum',
     folder: 'zppc',
@@ -175,10 +175,6 @@ var app =
         $('.app').removeClass('initializing');
         $( "[data-role='footer']" ).toolbar();
         $.mobile.changePage(activePage);
-    //    $('a.ui-btn[href=' + activePage + ']').addClass('ui-btn-active');
-        
-        
-        
         app.done = true; //All is loaded. Nothing needs to be loaded anymore.
     }
 };
