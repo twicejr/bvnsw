@@ -1,17 +1,27 @@
 var app =
 {
+    nav_count: 0,
     done: false,
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://192.168.1.7/testapp/server/api/json/read/', //@todo: change it to the appropriate.
+    remote: 'http://192.168.1.7/testappserver/api/json/', //@todo: change it to the appropriate.
     api_page: 'pages',
     api_pagesum: 'pagesum',
-    folder: 'zppc',
+    folder: 'wadsn41v1b',
     cacheFile: 'pages.json',
     initialize: function()
     {
-        app.bindEvents();
+        if(app.ready)
+        {
+            console.log('Already ready. Back button was pressed to exit!');            
+            navigator.app.exitApp();
+        }
+        else
+        {
+            console.log('Initialization & binding of events..');
+            app.bindEvents();
+        }
     },
     bindEvents: function()
     {
@@ -28,7 +38,6 @@ var app =
     },
     initialized: function()
     {
-        console.log('Device ready!');
         app.ready = true;
         
         $('body').on('click', 'a.external', function()
@@ -108,13 +117,13 @@ var app =
                 return;
             }
            
-            var checksum = data.data.sum;
+            var checksum = data.details.sum;
             //Data exists so use it when it is up to date.
             fs.getFileContents(app.remote + app.api_pagesum, function(checksumdata)
             {
-                if(checksumdata && checksumdata.data == checksum)
+                if(checksumdata && checksumdata.details == checksum)
                 {
-                    app.utilizeData(data);
+                    app.utilizeData(data.details);
                 }
                 else
                 {
@@ -135,25 +144,21 @@ var app =
             console.log('File did not download.');
             return;
         }
-        console.log('Utilizing downloaded file: ' + filename);
-        console.log('..1');
+        console.log('1. utilizing downloaded file: ' + filename);
         fs.getFileContents(filename, function(data)
         {
-            console.log('..3');
-            app.utilizeData(data);
+            console.log('..2');
+            app.utilizeData(data.details);
         });
-        
-        console.log('..2');
     },
-    utilizeData: function(data)
+    utilizeData: function(dataset)
     {
         console.log('Utilize data!');
-        if(data == undefined || data.data == undefined)
+        if(dataset == undefined)
         {
             console.log('undefined');
             return;
         }
-        var dataset = data.data;
         
         if(typeof dataset.css !== null && dataset.css)
         {
@@ -169,7 +174,7 @@ var app =
         }
         else
         {
-            activePage = '#home';
+            activePage = '#' + $('.page.homepage').attr('id');
         }
         
         $('.app').removeClass('initializing');
