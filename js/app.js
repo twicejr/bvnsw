@@ -156,16 +156,23 @@ var app =
         console.log('Utilize data!');
         if(dataset == undefined)
         {
-            console.log('undefined');
+            console.log('Error: no data.');
             return;
         }
         
+        /*
+         //disabled for now.
         if(typeof dataset.css !== null && dataset.css)
         {
             $('#style_remote').remove();
             $('head').append('<style type="text/css" id="style_remote">' + dataset.css + '</style>');
         }
+        */
+       
         $('body').html(dataset.pagedata);
+        
+        $('.app').removeClass('initializing');
+        $( "[data-role='footer']" ).toolbar();
         
         var activePage = $.mobile.activePage.attr("id");
         if(activePage)
@@ -176,9 +183,6 @@ var app =
         {
             activePage = '#' + $('.page.homepage').attr('id');
         }
-        
-        $('.app').removeClass('initializing');
-        $( "[data-role='footer']" ).toolbar();
         $.mobile.changePage(activePage);
         app.done = true; //All is loaded. Nothing needs to be loaded anymore.
     }
