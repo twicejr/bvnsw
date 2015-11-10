@@ -8,7 +8,7 @@ var app =
     remote: 'http://192.168.1.7/testappserver/api/json/', //@todo: change it to the appropriate.
     api_page: 'pages',
     api_pagesum: 'pagesum',
-    folder: 'wadsn41v1b',
+    folder: 'wsnvbdata',
     cacheFile: 'pages.json',
     initialize: function()
     {
@@ -185,5 +185,7 @@ var app =
         }
         $.mobile.changePage(activePage);
         app.done = true; //All is loaded. Nothing needs to be loaded anymore.
+        
+        $(document).trigger('appready');
     }
 };
