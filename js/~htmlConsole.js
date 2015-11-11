@@ -5,8 +5,6 @@ if (typeof console  != "undefined")
         console.olog = function() {};
 
 console.log = function(message) {
-    console.olog(message);
-    $('.loader').remove();
-    $('.app').prepend('<p>' + message + '</p>');
+    alert(message);
 };
 console.error = console.debug = console.info = console.log;

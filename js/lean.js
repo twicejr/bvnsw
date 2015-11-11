@@ -64,14 +64,19 @@ function lean_ajax_form()
                 },
                 success: function(data, textStatus, jqXHR)
                 {
+                    console.log('Response ok. Loading it');
                     loadJsonResponse(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown)
                 {
+                    console.log('Error: ' . textStatus);
                     /*@todo: error handling.........*/
                 }
             });
+            
+            console.log('and now?');
             e.preventDefault();
+            return false;
         });        
     });    
 }
@@ -87,6 +92,8 @@ function loadJsonResponse(jsonResponse)
             var curpage_id = $.mobile.activePage.attr("id");
             $('#' + curpage_id + ' article').html(json.html); //Thank you, server :)
             
+            
+            console.log('Replaced html');
             //todo: post jquerymobile processing.
             
             appready_after();
