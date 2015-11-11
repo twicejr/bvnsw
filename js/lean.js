@@ -10,21 +10,17 @@ function appready_after()
 
 function lean_ajax_form()
 {
-    console.log('Ajax forms.');
-
     $('form').each(function()
     {
         if($(this).data('initialized'))
         {
             return; 
         }
-        
         $(this).data('initialized', true);
         
         $(this).submit(function(e)
         {
             $(document).trigger('before-form-submit', $(this));
-            
             
             //Hideit
             if(!$(this).data('nodisable'))
@@ -46,7 +42,6 @@ function lean_ajax_form()
                     });
                 });
             }
-
 
             var formURL = $(this).attr('action') ? $(this).attr('action') : current_url();
 
@@ -81,36 +76,6 @@ function lean_ajax_form()
     });    
 }
 
-function lean_ajax_form_get_doc(frame)
-{
-    var doc = null;
-
-    // IE8 cascading access check
-    try
-    {
-        if (frame.contentWindow)
-        {
-            doc = frame.contentWindow.document;
-        }
-    } catch (err){}
-
-    if (doc)
-    { // successful getting content
-        return doc;
-    }
-
-    try 
-    { // simply checking may throw in ie8 under ssl or mismatched protocol
-        doc = frame.contentDocument ? frame.contentDocument : frame.document;
-    } 
-    catch (err)
-    {
-        // last attempt
-        doc = frame.document;
-    }
-    return doc;
-}
-
 function loadJsonResponse(jsonResponse)
 {
     try 
@@ -119,20 +84,22 @@ function loadJsonResponse(jsonResponse)
         var json = JSON.parse(jsonResponse);
         if(json.html)
         {
-            var html = $('<div> ' + json.html + '</div>');
-            
-            /*Shamelessly replace the div found. This relies on the server and the generated content to be compatible with this special piece of code*/
-            var founddivclass = html.find('div').attr('class');
             var curpage_id = $.mobile.activePage.attr("id");
-            console.log('#' + curpage_id + ' div[class="' + founddivclass + '"]');
-            $('#' + curpage_id + ' div[class="' + founddivclass + '"]').replaceWith(json.html).button();
+            $('#' + curpage_id + ' article').html(json.html); //Thank you, server :)
+            
+            //todo: post jquerymobile processing.
             
             appready_after();
+        }
+        if(json.popup)
+        {
+            $('#popup').remove();
+            $('<div data-role="popup" id="popup">' + json.popup + '</div>').appendTo('body').popup().popup("open");
         }
     } 
     catch (err)
     {
-        console.log('..failed because of: ' + err);
+        console.log('..failed because: ' + err);
         return false;
     }
 }
