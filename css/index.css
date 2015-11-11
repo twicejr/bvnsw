@@ -113,3 +113,14 @@ h1 {
     text-align: right;
     float: right;
 }
+
+.ui-popup-screen
+{
+    background: #000;
+}
+
+.ui-popup.ui-body-inherit
+{
+    background: #fff;
+    padding: 8px 12px;
+}
