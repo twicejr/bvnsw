@@ -126,16 +126,16 @@ var app =
             }
            
             var checksum = data.details.sum;
-            //Data exists so use it when it is up to date.
             fs.getFileContents(app.remote + app.api_pagesum, function(checksumdata)
             {
                 if(checksumdata && checksumdata.details == checksum)
                 {
                     app.utilizeData(data.details);
                 }
-                else
+                else if(data.details)
                 {
-                    app.initialFetch();
+                    //It failed! Are we online? Use old data anyway
+                    app.utilizeData(data.details);
                 }
             });
         });
@@ -172,11 +172,27 @@ var app =
         app.setCss(dataset.css);
         app.setJs(dataset.js);
         
+        app.specialism(dataset);
         app.initJqueryMobile(dataset.pagedata);
         app.changePage(app.getHomepage());
         
         app.done = true; //Done :)
         $(document).trigger('appready');
+    },
+    specialism: function(dataset)
+    {
+        $.each(dataset, function(key, value)
+        {
+            console.log(key);
+            console.log(value);
+            switch(key)
+            {
+                case 'notify_new':
+                    console.log(value.page_id);
+                    console.log(value.timestamp);
+                break;
+            }
+        });
     },
     setCss: function(css)
     {
