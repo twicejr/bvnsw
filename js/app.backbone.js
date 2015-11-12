@@ -63,6 +63,10 @@ var backbone =
                     contentType: false,
                     cache: false,
                     processData: false,
+                    headers: 
+                    {
+                        'x-is-apprequest': '1'
+                    },
                     complete: function()
                     {
                     },
