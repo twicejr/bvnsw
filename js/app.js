@@ -161,39 +161,83 @@ var app =
     },
     utilizeData: function(dataset)
     {
-        console.log('Utilize data!');
         if(dataset == undefined)
         {
             console.log('Error: no data.');
             return;
         }
         
-        /*
-         //disabled for now.
-        if(typeof dataset.css !== null && dataset.css)
+        //Use serverdata
+        console.log('Utilize serverdata');
+        app.setCss(dataset.css);
+        app.setJs(dataset.js);
+        
+        app.initJqueryMobile(dataset.pagedata);
+        app.changePage(app.getHomepage());
+        
+        app.done = true; //Done :)
+        $(document).trigger('appready');
+    },
+    setCss: function(css)
+    {
+        console.log('Setting css');
+        if(!css)
         {
-            $('#style_remote').remove();
-            $('head').append('<style type="text/css" id="style_remote">' + dataset.css + '</style>');
+            return;
         }
-        */
-       
-        $('body').html(dataset.pagedata);
-        
-        $('.app').removeClass('initializing');
-        $( "[data-role='footer']" ).toolbar();
-        
-        var activePageId = $('body').pagecontainer('getActivePage').attr('id');
+        $('#css_remote').remove();
+        $('head').append('<style type="text/css" id="css_remote">' + css + '</style>');
+    },
+    setJs: function(js)
+    {
+        console.log('Setting js');
+        if(!js)
+        {
+            return;
+        }
+        $('#js_remote').remove();
+        $('head').append('<script type="text/javascript" id="js_remote">' + js + '</script>');
+    },
+    activePage: function()
+    {
+        return $('body').pagecontainer('getActivePage');
+    },
+    changePage: function(page_id)
+    {
+        $('body').pagecontainer('change', page_id);
+    },
+    initJqueryMobile: function(pagedata)
+    {
+        $('body').html(pagedata);               //Put data.
+        $('body').pagecontainer                 //Bind events
+        ({
+            change: function( event, ui )
+            {
+                console.log('Set page to ' + ui.toPage.attr('id'));
+            }
+        });
+        $('.app').removeClass('initializing');  // We aren't loading anymore.. remove any spinners.
+        $("[data-role='footer']").toolbar();    // Fix the footer :)
+    },
+    replacePageArticle: function(html)
+    {
+        $('#' + app.activePage().attr('id') + ' article').html(html).trigger("create");
+    },
+    getHomepage: function()
+    {
+        var activePageId = app.activePage().attr('id');
         if(activePageId)
         {
-            activePageId = '#' + activePageId;
+            return '#' + activePageId;
         }
-        else
-        {
-            activePageId = '#' + $('.page.homepage').attr('id');
-        }
-        $('body').pagecontainer('change', activePageId)
-        app.done = true; //All is loaded. Nothing needs to be loaded anymore.
-        
-        $(document).trigger('appready');
+        return '#' + $('.page.homepage').attr('id');
+    },
+    showPopup: function(content)
+    {
+        $('#popup').remove(); //Remove any old popups
+        var popupElem = $('<div data-role="popup" id="popup" data-transition="flip">' + content + '</div>');
+        popupElem.appendTo('body');
+        popupElem.popup();       //Init
+        popupElem.popup("open"); //Open
     }
 };
