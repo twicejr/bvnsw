@@ -121,26 +121,45 @@ var app =
                     console.log('Removing erroneous file: ' + cachefile_location);
                     fs.removeFile(cachefile_location);
                 }
-                app.initialFetch();
+                app.completeRefresh();
                 return;
             }
            
             var checksum = data.details.sum;
             fs.getFileContents(app.remote + app.api_pagesum, function(checksumdata)
             {
-                if(checksumdata && checksumdata.details == checksum)
+                if(checksumdata)
                 {
-                    app.utilizeData(data.details);
+                    if(checksumdata.details == checksum)
+                    {
+                        console.log('Using existing dataset');
+                        app.utilizeData(data.details); //Reuse date
+                    }
+                    else
+                    {
+                        console.log('Fetch new dataset');
+                        app.completeRefresh();
+                    }
                 }
                 else if(data.details)
                 {
-                    //It failed! Are we online? Use old data anyway
+                    //No internet
+                    console.log('Use existing dataset (no internet)');
                     app.utilizeData(data.details);
+                }
+                else
+                {
+                    console.log("There's nothing we can do now. Let's tell the user we are sorry!");
+                    app.excuseUs();
                 }
             });
         });
     },
-    initialFetch: function()
+    excuseUs: function()
+    {
+        console.log('(todo)');
+    },
+    completeRefresh: function()
     {
         console.log('Download complete file');
         fs.download(app.remote + app.api_page, app.cacheFile, app.folder, app.utilizeDownloadResult);
