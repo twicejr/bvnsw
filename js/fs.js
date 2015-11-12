@@ -11,6 +11,16 @@ var fs =
     {
         fs._init(callback);
     },
+    removeFile: function(filename)
+    {
+        this._fileSystem.root.getFile(filename, {create:false}, function(fileEntry)
+        {
+            fileEntry.remove(function()
+            {
+                console.log("File removed: " + filename);
+            });
+        });
+    },
     download: function(remote_file, local_file, local_folder, callback)
     {
         var local_filepath = fs.root + local_folder + '/' + local_file;
@@ -51,6 +61,11 @@ var fs =
             error: function(xhr,error,code) 
             {
                 console.log('...error: ' + error + ', :' + code);
+                if(error == 'parsererror')
+                {
+                    callback(-1);
+                    return false;
+                }
                 callback(false);
             },
             success: function(data)

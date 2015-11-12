@@ -26,6 +26,12 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
+td, 
+th
+{
+    vertical-align: top;
+}
+
 /* Portrait layout (default) */
 .app {
     position:absolute;             /* position in the center of the screen */
@@ -123,4 +129,19 @@ h1 {
 {
     background: #fff;
     padding: 8px 12px;
+}
+
+.section_table label
+{
+    line-height: 3.5em;
+}
+
+footer a
+{
+    color: #333;
+}
+
+footer li
+{
+    background: #fff;
 }

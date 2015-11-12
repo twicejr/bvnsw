@@ -61,7 +61,8 @@ var app =
             function (locale) 
             {
                 //Add the language when it is available.
-                //app.lang = locale.value; //nah never mind.
+                app.lang = locale.value == 'nl-NL' ? 'nl' : 'en'; //@todo: cleaner solution.
+                
                 app.api_page += '?lang=' + app.lang;
                 app.api_pagesum += '?lang=' + app.lang;
             },
@@ -111,8 +112,15 @@ var app =
         //Check if file exists.
         fs.getFileContents(cachefile_location, function(data)
         {
-            if(!data)
+            if(!data || data === -1)
             {   //No data exists so download it now.
+                
+                if(data === -1) //File parsererror. Server bogus?
+                {
+                    //clear the crap
+                    console.log('Removing erroneous file: ' + cachefile_location);
+                    fs.removeFile(cachefile_location);
+                }
                 app.initialFetch();
                 return;
             }
@@ -174,16 +182,16 @@ var app =
         $('.app').removeClass('initializing');
         $( "[data-role='footer']" ).toolbar();
         
-        var activePage = $.mobile.activePage.attr("id");
-        if(activePage)
+        var activePageId = $('body').pagecontainer('getActivePage').attr('id');
+        if(activePageId)
         {
-            activePage = '#' + activePage;
+            activePageId = '#' + activePageId;
         }
         else
         {
-            activePage = '#' + $('.page.homepage').attr('id');
+            activePageId = '#' + $('.page.homepage').attr('id');
         }
-        $.mobile.changePage(activePage);
+        $('body').pagecontainer('change', activePageId)
         app.done = true; //All is loaded. Nothing needs to be loaded anymore.
         
         $(document).trigger('appready');

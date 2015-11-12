@@ -51,6 +51,8 @@ function lean_ajax_form()
             }
 
             var formData = new FormData(this);
+            
+            console.log('Making ajax call to server...');
             $.ajax({
                 url: formURL,
                 type: 'POST',
@@ -64,7 +66,6 @@ function lean_ajax_form()
                 },
                 success: function(data, textStatus, jqXHR)
                 {
-                    console.log('Response ok. Loading it');
                     loadJsonResponse(data);
                 },
                 error: function(jqXHR, textStatus, errorThrown)
@@ -74,7 +75,6 @@ function lean_ajax_form()
                 }
             });
             
-            console.log('and now?');
             e.preventDefault();
             return false;
         });        
@@ -85,23 +85,21 @@ function loadJsonResponse(jsonResponse)
 {
     try 
     {
-        console.log('loading response..');
+        console.log('...loading response..');
         var json = JSON.parse(jsonResponse);
         if(json.html)
         {
             var curpage_id = $.mobile.activePage.attr("id");
-            $('#' + curpage_id + ' article').html(json.html); //Thank you, server :)
-            
-            
-            console.log('Replaced html');
-            //todo: post jquerymobile processing.
-            
+            $('#' + curpage_id + ' article').html(json.html).trigger("create");
+            console.log('Replaced html and re-triggered jQuery mobile');
             appready_after();
         }
         if(json.popup)
         {
             $('#popup').remove();
-            $('<div data-role="popup" id="popup">' + json.popup + '</div>').appendTo('body').popup().popup("open");
+            var popupElem = $('<div data-role="popup" id="popup" data-transition="flip">' + json.popup + '</div>').appendTo('body');
+            popupElem.popup(); //Init
+            popupElem.popup("open"); //Open
         }
     } 
     catch (err)
