@@ -10,6 +10,9 @@
     <content src="index.html" />
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>    
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
@@ -28,6 +31,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
     <preference name="StatusBarOverlaysWebView" value="false" />
+    <!--<preference name="StatusBarBackgroundColor" value="#000000" />-->
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
