@@ -31,7 +31,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <!--<preference name="StatusBarBackgroundColor" value="#000000" />-->
+    <preference name="StatusBarBackgroundColor" value="#000000" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
