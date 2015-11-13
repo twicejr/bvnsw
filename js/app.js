@@ -171,10 +171,9 @@ var app =
             console.log('File did not download.');
             return;
         }
-        console.log('1. utilizing downloaded file: ' + filename);
+        console.log('Utilizing downloaded file: ' + filename);
         fs.getFileContents(filename, function(data)
         {
-            console.log('..2');
             app.utilizeData(data.details);
         });
     },
@@ -187,31 +186,21 @@ var app =
         }
         
         //Use serverdata
-        console.log('Utilize serverdata');
+        console.log('Utilize the dataset!');
         app.setCss(dataset.css);
         app.setJs(dataset.js);
         
-        app.specialism(dataset);
+        //Parse special data        
         app.initJqueryMobile(dataset.pagedata);
         app.changePage(app.getHomepage());
         
+        if(dataset.specialdata)
+        {
+            backbone.specialism(dataset.specialdata);
+        }
+        
         app.done = true; //Done :)
         $(document).trigger('appready');
-    },
-    specialism: function(dataset)
-    {
-        $.each(dataset, function(key, value)
-        {
-            console.log(key);
-            console.log(value);
-            switch(key)
-            {
-                case 'notify_new':
-                    console.log(value.page_id);
-                    console.log(value.timestamp);
-                break;
-            }
-        });
     },
     setCss: function(css)
     {

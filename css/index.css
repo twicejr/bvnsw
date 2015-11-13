@@ -145,3 +145,22 @@ footer li
 {
     background: #fff;
 }
+
+footer li.has-new-content
+{
+    animation: newalert 1s infinite;
+    -webkit-animation: newalert 1s infinite;
+}
+
+/* Animation Keyframes*/
+@keyframes newalert {
+    0% { background: #fff;  }
+    50% { background: #faa; color: #fff; }
+    100% { background: #fff;  }
+}
+
+@-webkit-keyframes newalert {
+    0% { background: #fff;  }
+    50% { background: #faa; color: #fff; }
+    100% { background: #fff;  }
+}

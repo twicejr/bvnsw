@@ -107,5 +107,41 @@ var backbone =
             console.log('..failed because: ' + err);
             return false;
         }
+    },
+    specialism: function(specialdata)
+    {
+        $.each(specialdata, function(key, data)
+        {
+            switch(key)
+            {
+                case 'notify_new':
+                    backbone.notificationdisplayToggle(data.page_id, data.timestamp);
+                break;
+            }
+        });
+    },
+    notificationdisplayToggle: function(page_id, timestamp)
+    {
+        var storagekey = 'notification_page_' + page_id;
+        if(localStorage.getItem(storagekey) == timestamp)
+        {
+            return;
+        }
+        
+        backbone.notificationOnPage(page_id, storagekey, timestamp);
+    },
+    notificationOnPage: function(page_id, storagekey, uniqid)
+    {
+        //Add a class to the footer item!
+        var elem = $('footer a[href="#' + page_id + '"]').parent();
+        
+        elem.addClass('has-new-content');
+        
+        //Let it remove this class once the page is shown, and dismiss the message
+        $('footer a[href="#' + page_id + '"]').click(function()
+        {
+            elem.removeClass('has-new-content');
+            localStorage.setItem(storagekey, uniqid); 
+        });
     }
 };
