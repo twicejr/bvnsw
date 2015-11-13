@@ -1,5 +1,6 @@
 var app =
 {
+    refresh_interval: 0, //Millisceconds. 0 = disable
     nav_count: 0,
     done: false,
     ready: false,
@@ -35,6 +36,14 @@ var app =
         document.addEventListener('offlineswitch', app.offlineSwitch, false);
         document.addEventListener('onlineswitch', app.whenReady, false);
         document.addEventListener("resume", app.whenReady, false);
+        
+        if(app.refresh_interval)
+        {
+            setInterval(function()
+            {
+                app.whenReady();
+            }, app.refresh_interval);
+        }
     },
     initialized: function()
     {
@@ -100,13 +109,24 @@ var app =
     },
     whenReady: function()
     {
-        if(app.ready && !app.done)
+        if(app.ready)
         {
-            fs.prepare(app.checkData);
+            if(!app.done)
+            {
+                //Check for contents after the filesystem is ready.
+                fs.prepare(app.checkData);
+            }
+            else
+            {
+                //Just check for new contents again
+                app.checkData();
+            }
         }
     },
     checkData: function()
     {
+        console.log('Checking to see if there is new content');
+        
         var cachefile_location = fs.buildFileUrl(app.folder + '/' + app.cacheFile);
 
         //Check if file exists.
@@ -240,7 +260,8 @@ var app =
                 console.log('Set page to ' + ui.toPage.attr('id'));
             }
         });
-        $('.app').removeClass('initializing');  // We aren't loading anymore.. remove any spinners.
+        $('.app').removeClass('initializing');
+        $('.spinner').remove();
         $("[data-role='footer']").toolbar();    // Fix the footer :)
     },
     replacePageArticle: function(html)
