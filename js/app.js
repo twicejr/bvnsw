@@ -47,6 +47,10 @@ var app =
     },
     initialized: function()
     {
+        //Status bar fixes
+        StatusBar.overlaysWebView(false);
+        alert('wtf');
+        
         app.ready = true;
         
         $('body').on('click', 'a.external', function()
