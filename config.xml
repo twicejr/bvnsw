@@ -58,7 +58,7 @@
     <gap:plugin name="org.apache.cordova.globalization" spec="~1.0.1" />
     <gap:plugin name="org.apache.cordova.file" spec="~3.0.0" />
     <gap:plugin name="org.apache.cordova.file-transfer" spec="~1.3.0" />
-    <gap:plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-globalization" spec="~1.0.1" />
     <plugin name="cordova-plugin-file" spec="~3.0.0" />
