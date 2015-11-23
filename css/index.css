@@ -51,6 +51,12 @@ h1 {
     text-align:left;
 }
 
+h2
+{
+    margin-bottom: 3px;
+    line-height: 18px;
+}
+
 .event {
     border-radius:4px;
     -webkit-border-radius:4px;
@@ -127,6 +133,7 @@ header
     background-repeat: no-repeat;
     background-size: contain;
 }
+
 footer
 {
     background: #fff;
