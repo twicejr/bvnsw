@@ -11,15 +11,7 @@
     <feature name="InAppBrowser">
         <param name="ios-package" value="CDVInAppBrowser" />
     </feature>   
-    <feature name="StatusBar">
-        <param name="ios-package" onload="true" value="CDVStatusBar" />
-    </feature>
-    <preference name="ios-statusbarstyle" value="black-opaque" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarStyle" value="darkcontent" />
-    <plugin name="org.apache.cordova.statusbar" version="0.1.4" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
-
+   
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
@@ -108,10 +100,20 @@
     <splash platform="ios" src="www/img/iOS/Resources/splash/Default~ipad.png" height="2008" width="1536"/>
     <splash platform="ios" src="www/img/iOS/Resources/splash/Default~iphone.png" height="480" width="320"/>
 
-    <plugin name="cordova-plugin-whitelist" source="npm" />
-    <plugin name="org.apache.cordova.globalization" />
-    <plugin name="org.apache.cordova.file" spec="1.3.3" source="pgb" />
-    <plugin name="org.apache.cordova.file-transfer"  spec="0.5.0" source="pgb" />
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarStyle" value="darkcontent" />
+    
+    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.file" spec="1.3.3" source="pgb" />
+    <gap:plugin name="org.apache.cordova.file-transfer"  spec="0.5.0" source="pgb" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-globalization" spec="~1.0.1" />
     <plugin name="cordova-plugin-file" spec="~3.0.0" />
