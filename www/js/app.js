@@ -47,8 +47,8 @@ var app =
     },
     initialized: function()
     {
-        //Status bar fix for Apple
-        StatusBar.overlaysWebView(false);
+//        //Status bar fix for Apple
+//        StatusBar.overlaysWebView(false);
         
         app.ready = true;
         
