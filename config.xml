@@ -100,15 +100,15 @@
     <splash platform="ios" src="www/img/iOS/Resources/splash/Default~ipad.png" height="2008" width="1536"/>
     <splash platform="ios" src="www/img/iOS/Resources/splash/Default~iphone.png" height="480" width="320"/>
 
-    <feature name="StatusBar">
-        <param name="ios-package" onload="true" value="CDVStatusBar" />
-    </feature>
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarStyle" value="darkcontent" />
-    
+<!--    
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
     <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />-->
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="org.apache.cordova.globalization" />
