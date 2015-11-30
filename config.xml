@@ -103,7 +103,8 @@
     <preference name="ios-statusbarstyle" value="black-opaque" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarStyle" value="darkcontent" />
-<!--    
+    
+    <!--    
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
