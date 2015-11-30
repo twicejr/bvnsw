@@ -27,6 +27,7 @@
     <preference name="android-minSdkVersion" value="14" />
     <preference name="android-installLocation" value="auto" />
     <preference name="iosPersistentFileLocation" value="Compatibility" />
+    
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -104,12 +105,11 @@
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarStyle" value="darkcontent" />
     
-    <!--    
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
-    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />-->
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
 
     <gap:plugin name="cordova-plugin-whitelist" source="npm" />
     <gap:plugin name="org.apache.cordova.globalization" />
