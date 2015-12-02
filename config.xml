@@ -53,6 +53,18 @@
     <icon platform="android" src="Android/drawable-xhdpi/icon.png" density="xhdpi"/>
     <icon platform="android" src="Android/drawable-xxhdpi/icon.png" density="xxhdpi"/>
     <icon platform="android" src="Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+    <splash platform="android" src="Android/drawable-land-ldpi/screen.png" qualifier="land-ldpi"/>
+    <splash platform="android" src="Android/drawable-land-mdpi/screen.png" qualifier="land-mdpi"/>
+    <splash platform="android" src="Android/drawable-land-hdpi/screen.png" qualifier="land-hdpi"/>
+    <splash platform="android" src="Android/drawable-land-xhdpi/screen.png" qualifier="land-xhdpi"/>
+    <splash platform="android" src="Android/drawable-land-xxhdpi/screen.png" qualifier="land-xxhdpi"/>
+    <splash platform="android" src="Android/drawable-land-xxxhdpi/screen.png" qualifier="land-xxxhdpi"/>   
+    <splash platform="android" src="Android/drawable-ldpi/screen.png" qualifier="port-ldpi"/>
+    <splash platform="android" src="Android/drawable-mdpi/screen.png" qualifier="port-mdpi"/>
+    <splash platform="android" src="Android/drawable-hdpi/screen.png" qualifier="port-hdpi"/>
+    <splash platform="android" src="Android/drawable-xhdpi/screen.png" qualifier="port-xhdpi"/>
+    <splash platform="android" src="Android/drawable-xxhdpi/screen.png" qualifier="port-xxhdpi"/>
+    <splash platform="android" src="Android/drawable-xxxhdpi/screen.png" qualifier="port-xxxhdpi"/>     
 
     <gap:splash src="splash/320x480.png"   gap:platform="ios" width="320"  height="480"  /><!-- Regular iPhone4 -->
     <gap:splash src="splash/640x960.png"   gap:platform="ios" width="640"  height="960"  /><!-- Retina iPhone4 -->
