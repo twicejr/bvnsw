@@ -6,7 +6,7 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://wsvnb.nl/appsrv/api/json/',
+    remote: 'http://appserver.wsvnb.nl/api/json/',
     api_page: 'pages',
     api_pagesum: 'pagesum',
     folder: 'wsnvbapp',
