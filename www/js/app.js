@@ -15,8 +15,8 @@ var app =
     {
         if(app.ready)
         {
-            console.log('Already ready. Back button was pressed to exit!');            
-            navigator.app.exitApp();
+            console.log('Already ready. Back button was pressed to exit!');
+            //navigator.app.exitApp();
         }
         else
         {
@@ -24,8 +24,23 @@ var app =
             app.bindEvents();
         }
     },
+    backButton: function(e)
+    {
+        if(app.activePage().is($('.page.homepage')))
+        {
+            console.log('Exit app; we are on the homepage..');
+            navigator.app.exitApp();
+        }
+        else 
+        {
+            console.log('Going back a page.');
+            navigator.app.backHistory();
+        }
+    },
     bindEvents: function()
     {
+        document.addEventListener("backbutton", app.backButton);
+
         document.addEventListener('deviceready', app.initialized, false);
         document.addEventListener('online', app.onOnline, false);
         document.addEventListener('offline', app.onOffline, false);
