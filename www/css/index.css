@@ -136,16 +136,17 @@ header
 
 footer
 {
-    background: #fff;
+    background: #195297;
 }
 footer a
 {
-    color: #333;
+    color: #fff;
+    text-shadow: none !important;
 }
 
 footer li
 {
-    background: #fff;
+    background: #195297;
 }
 
 footer li.has-new-content
