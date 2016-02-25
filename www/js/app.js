@@ -6,7 +6,7 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://appserver.wsvnb.nl/api/json/',
+    remote: 'http://192.168.11.18/testappserver/api/json/',
     api_page: 'pages',
     api_pagesum: 'pagesum',
     folder: 'wsnvbapp',
@@ -266,6 +266,23 @@ var app =
     {
         $('.section_edit').each(function()
         {
+            $(this).find('input, textarea, select').each(function()
+            {
+                var storagekey = 'inputstorage_' + $(this).attr('id');
+                var existing_value = localStorage.getItem(storagekey);
+                if(existing_value)
+                {
+                    $(this).val(existing_value);
+                }
+                $(this).change(function()
+                {
+                    if(existing_value != $(this).val())
+                    {
+                        localStorage.setItem(storagekey, $(this).val());
+                    }
+                });
+            });
+            
             $(this).find('input[type="date"]').change(function()
             {
                 var nextOne = $(this).parent().parent().parent().next();
@@ -274,21 +291,18 @@ var app =
                     nextOne.find('input[type="date"]').attr('min', $(this).val());
                     nextOne = nextOne.next();
                 }
-                var prevOne = $(this).parent().parent().parent().prev();
-                while(prevOne.length)
-                {
-                    prevOne.find('input[type="date"]').attr('max', $(this).val());
-                    prevOne = prevOne.prev();
-                }
+//                var prevOne = $(this).parent().parent().parent().prev();
+//                while(prevOne.length)
+//                {
+//                    prevOne.find('input[type="date"]').attr('max', $(this).val());
+//                    prevOne = prevOne.prev();
+//                }
             });
         });
     },
     initJqueryMobile: function(pagedata)
     {
         $('body').html(pagedata);               //Put data.
-        
-        app.preProcessHtml();
-        
         $('body').pagecontainer                 //Bind events
         ({
             change: function( event, ui )
@@ -299,6 +313,8 @@ var app =
         $('.app').removeClass('initializing');
         $('.spinner').remove();
         $("[data-role='footer']").toolbar();    // Fix the footer :)
+        
+        app.preProcessHtml();
     },
     replacePageArticle: function(html)
     {
