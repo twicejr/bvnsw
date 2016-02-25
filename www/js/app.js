@@ -236,21 +236,21 @@ var app =
     },
     setCss: function(css)
     {
-        console.log('Setting css');
         if(!css)
         {
             return;
         }
+        console.log('Setting css');
         $('#css_remote').remove();
         $('head').append('<style type="text/css" id="css_remote">' + css + '</style>');
     },
     setJs: function(js)
     {
-        console.log('Setting js');
         if(!js)
         {
             return;
         }
+        console.log('Setting js');
         $('#js_remote').remove();
         $('head').append('<script type="text/javascript" id="js_remote">' + js + '</script>');
     },
@@ -262,9 +262,33 @@ var app =
     {
         $('body').pagecontainer('change', page_id);
     },
+    preProcessHtml: function()
+    {
+        $('.section_edit').each(function()
+        {
+            $(this).find('input[type="date"]').change(function()
+            {
+                var nextOne = $(this).parent().parent().parent().next();
+                while(nextOne.length)
+                {
+                    nextOne.find('input[type="date"]').attr('min', $(this).val());
+                    nextOne = nextOne.next();
+                }
+                var prevOne = $(this).parent().parent().parent().prev();
+                while(prevOne.length)
+                {
+                    prevOne.find('input[type="date"]').attr('max', $(this).val());
+                    prevOne = prevOne.prev();
+                }
+            });
+        });
+    },
     initJqueryMobile: function(pagedata)
     {
         $('body').html(pagedata);               //Put data.
+        
+        app.preProcessHtml();
+        
         $('body').pagecontainer                 //Bind events
         ({
             change: function( event, ui )
