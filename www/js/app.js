@@ -7,8 +7,8 @@ var app =
     lang: 'nl',
     state_online: null,
     remote: 'http://192.168.11.18/testappserver/api/json/',
-    api_page: 'pages',
-    api_pagesum: 'pagesum',
+    api_page: 'pagesv2',
+    api_pagesum: 'pagesumv2',
     folder: 'wsnvbapp',
     cacheFile: 'pages.json',
     initialize: function()
@@ -86,8 +86,8 @@ var app =
                 //Add the language when it is available.
                 app.lang = locale.value == 'nl-NL' ? 'nl' : 'en'; //@todo: find a good solution.
                 
-                app.api_page += '?lang=' + app.lang;
-                app.api_pagesum += '?lang=' + app.lang;
+                app.api_page += '?b64i=1&lang=' + app.lang;
+                app.api_pagesum += '?b64i=1&lang=' + app.lang;
             },
             function () {console.log('Language could not be detected!');}
         );
