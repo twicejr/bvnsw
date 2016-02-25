@@ -6,9 +6,9 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://192.168.11.18/testappserver/api/json/',
-    api_page: 'pagesv2',
-    api_pagesum: 'pagesumv2',
+    remote: 'http://appserver.wsvnb.nl/api/json/',
+    api_page: 'pages',
+    api_pagesum: 'pagesum',
     folder: 'wsnvbapp',
     cacheFile: 'pages.json',
     initialize: function()
