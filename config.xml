@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.visiecom.wsvnb" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.visiecom.wsvnb" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Wsvnb</name>
     <description>
         Wsvnb boat app
@@ -14,14 +14,18 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
+<!--    <feature name="InAppBrowser">
+        <param name="ios-package" value="CDVInAppBrowser" />
+    </feature>   
+   -->
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
     <preference name="target-device" value="universal" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
-    <preference name="prerendered-icon" value="true" />
     <preference name="stay-in-webview" value="false" />
     <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="prerendered-icon" value="false" />
     <preference name="detect-data-types" value="true" />
     <preference name="exit-on-suspend" value="false" />
     <preference name="show-splash-screen-spinner" value="false" />
@@ -32,6 +36,7 @@
     <preference name="iosPersistentFileLocation" value="Compatibility" />
     <preference name="StatusBarOverlaysWebView" value="false" />
     <preference name="StatusBarStyle" value="darkcontent" />
+    
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -79,6 +84,78 @@
     <gap:plugin name="org.apache.cordova.file" spec="~3.0.0" />
     <gap:plugin name="org.apache.cordova.file-transfer" spec="~1.3.0" />
     <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
+    
+    <icon src="icon.png" /> 
+    <splash src="screen.png" />
+
+    <icon platform="android" src="www/Android/drawable-ldpi/icon.png" density="ldpi"/>
+    <icon platform="android" src="www/Android/drawable-mdpi/icon.png" density="mdpi"/>
+    <icon platform="android" src="www/Android/drawable-hdpi/icon.png" density="hdpi"/>
+    <icon platform="android" src="www/Android/drawable-xhdpi/icon.png" density="xhdpi"/>
+    <icon platform="android" src="www/Android/drawable-xxhdpi/icon.png" density="xxhdpi"/>
+    <icon platform="android" src="www/Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+    <splash platform="android" src="www/Android/drawable-land-ldpi/screen.png" qualifier="land-ldpi"/>
+    <splash platform="android" src="www/Android/drawable-land-mdpi/screen.png" qualifier="land-mdpi"/>
+    <splash platform="android" src="www/Android/drawable-land-hdpi/screen.png" qualifier="land-hdpi"/>
+    <splash platform="android" src="www/Android/drawable-land-xhdpi/screen.png" qualifier="land-xhdpi"/>
+    <splash platform="android" src="www/Android/drawable-land-xxhdpi/screen.png" qualifier="land-xxhdpi"/>
+    <splash platform="android" src="www/Android/drawable-land-xxxhdpi/screen.png" qualifier="land-xxxhdpi"/>   
+    <splash platform="android" src="www/Android/drawable-ldpi/screen.png" qualifier="port-ldpi"/>
+    <splash platform="android" src="www/Android/drawable-mdpi/screen.png" qualifier="port-mdpi"/>
+    <splash platform="android" src="www/Android/drawable-hdpi/screen.png" qualifier="port-hdpi"/>
+    <splash platform="android" src="www/Android/drawable-xhdpi/screen.png" qualifier="port-xhdpi"/>
+    <splash platform="android" src="www/Android/drawable-xxhdpi/screen.png" qualifier="port-xxhdpi"/>
+    <splash platform="android" src="www/Android/drawable-xxxhdpi/screen.png" qualifier="port-xxxhdpi"/>     
+
+    <gap:splash src="splash/320x480.png"   gap:platform="ios" width="320"  height="480"  /><!-- Regular iPhone4 -->
+    <gap:splash src="splash/640x960.png"   gap:platform="ios" width="640"  height="960"  /><!-- Retina iPhone4 -->
+    <gap:splash src="splash/640x1136.png"  gap:platform="ios" width="640"  height="1136" /><!-- iPhone5 -->
+    <gap:splash src="splash/768x1004.png"  gap:platform="ios" width="768"  height="1004" /><!-- iPad Portrait -->
+    <gap:splash src="splash/1024x748.png"  gap:platform="ios" width="1024" height="748"  /><!-- iPad Landscape -->
+    <gap:splash src="splash/1536x2008.png" gap:platform="ios" width="1536" height="2008" /><!-- Retina iPad Portrait - Requires PhoneGap 2.5.0+ -->
+    <gap:splash src="splash/2048x1496.png" gap:platform="ios" width="2048" height="1496" /><!-- Retina iPad Landscape - Requires PhoneGap 2.5.0+ -->
+    <gap:splash src="splash/750x1334.png"  gap:platform="ios" width="750" height="1334"  /><!-- iPhone6 Portrait -->
+    <gap:splash src="splash/1242x2208.png"  gap:platform="ios" width="1242" height="2208"  /><!-- iPhone6+ Portrait -->
+    <gap:splash src="splash/2208x1242.png"  gap:platform="ios" width="2208" height="1242"  /><!-- iPhone6+ Landscape -->
+    <!-- iOS 7.0+ -->
+    <!-- iPhone / iPod Touch  -->
+    <icon src="icons/icon-60.png" width="60" height="60" />
+    <icon src="icons/icon-120.png" width="120" height="120" hint="iPhone4,5,6" />
+    <icon src="icons/icon-180.png" width="180" height="180" hint="iPhone6+" />
+    <!-- iPad -->
+    <icon src="icons/icon-76.png" width="76" height="76" />
+    <icon src="icons/icon-152.png" width="152" height="152" />
+    <!-- iOS 6.1 -->
+    <!-- Spotlight Icon -->
+    <icon src="icons/icon-40.png" width="40" height="40" />
+    <icon src="icons/icon-80.png" width="80" height="80" />
+    <!-- iPhone / iPod Touch -->
+    <icon src="icons/icon-57.png" width="57" height="57" />
+    <icon src="icons/icon-114.png" width="114" height="114" />
+    <!-- iPad -->
+    <icon src="icons/icon-72.png" width="72" height="72" />
+    <icon src="icons/icon-144.png" width="144" height="144" />
+    <!-- iPhone Spotlight and Settings Icon -->
+    <icon src="icons/icon-29.png" width="29" height="29" />
+    <icon src="icons/icon-58.png" width="58" height="58" />
+    <!-- iPad Spotlight and Settings Icon -->
+    <icon src="icons/icon-50.png" width="50" height="50" />
+    <icon src="icons/icon-100.png" width="100" height="100" />
+
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarStyle" value="darkcontent" />
+    
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <gap:plugin name="org.apache.cordova.statusbar" version="0.1.4" />
+    <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
+
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+    <gap:plugin name="org.apache.cordova.globalization" />
+    <gap:plugin name="org.apache.cordova.file" spec="1.3.3" source="pgb" />
+    <gap:plugin name="org.apache.cordova.file-transfer"  spec="0.5.0" source="pgb" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-globalization" spec="~1.0.1" />
     <plugin name="cordova-plugin-file" spec="~3.0.0" />
