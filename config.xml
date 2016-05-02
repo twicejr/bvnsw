@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.visiecom.wsvnb" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.visiecom.wsvnb" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Wsvnb</name>
     <description>
         Wsvnb boat app
@@ -94,18 +94,23 @@
     <icon platform="android" src="www/Android/drawable-xhdpi/icon.png" density="xhdpi"/>
     <icon platform="android" src="www/Android/drawable-xxhdpi/icon.png" density="xxhdpi"/>
     <icon platform="android" src="www/Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+    <icon platform="android" src="www/Android/drawable-xxxxhdpi/icon.png" density="xxxxhdpi"/>
+
     <splash platform="android" src="www/Android/drawable-land-ldpi/screen.png" qualifier="land-ldpi"/>
     <splash platform="android" src="www/Android/drawable-land-mdpi/screen.png" qualifier="land-mdpi"/>
     <splash platform="android" src="www/Android/drawable-land-hdpi/screen.png" qualifier="land-hdpi"/>
     <splash platform="android" src="www/Android/drawable-land-xhdpi/screen.png" qualifier="land-xhdpi"/>
     <splash platform="android" src="www/Android/drawable-land-xxhdpi/screen.png" qualifier="land-xxhdpi"/>
     <splash platform="android" src="www/Android/drawable-land-xxxhdpi/screen.png" qualifier="land-xxxhdpi"/>   
+    <splash platform="android" src="www/Android/drawable-land-xxxxhdpi/screen.png" qualifier="land-xxxxhdpi"/>
+
     <splash platform="android" src="www/Android/drawable-ldpi/screen.png" qualifier="port-ldpi"/>
     <splash platform="android" src="www/Android/drawable-mdpi/screen.png" qualifier="port-mdpi"/>
     <splash platform="android" src="www/Android/drawable-hdpi/screen.png" qualifier="port-hdpi"/>
     <splash platform="android" src="www/Android/drawable-xhdpi/screen.png" qualifier="port-xhdpi"/>
     <splash platform="android" src="www/Android/drawable-xxhdpi/screen.png" qualifier="port-xxhdpi"/>
     <splash platform="android" src="www/Android/drawable-xxxhdpi/screen.png" qualifier="port-xxxhdpi"/>     
+    <splash platform="android" src="www/Android/drawable-xxxxhdpi/screen.png" qualifier="port-xxxxhdpi"/>
 
     <gap:splash src="splash/320x480.png"   gap:platform="ios" width="320"  height="480"  /><!-- Regular iPhone4 -->
     <gap:splash src="splash/640x960.png"   gap:platform="ios" width="640"  height="960"  /><!-- Retina iPhone4 -->
@@ -162,3 +167,4 @@
     <plugin name="cordova-plugin-file-transfer" spec="~1.3.0" />
     <plugin name="cordova-plugin-statusbar" spec="~1.0.1" />
 </widget>
+
