@@ -21,13 +21,13 @@
     </feature>   
    -->
 
-    <icon platform="android" src="www/Android/drawable-ldpi/icon.png" density="ldpi"/>
-    <icon platform="android" src="www/Android/drawable-mdpi/icon.png" density="mdpi"/>
-    <icon platform="android" src="www/Android/drawable-hdpi/icon.png" density="hdpi"/>
-    <icon platform="android" src="www/Android/drawable-xhdpi/icon.png" density="xhdpi"/>
-    <icon platform="android" src="www/Android/drawable-xxhdpi/icon.png" density="xxhdpi"/>
-    <icon platform="android" src="www/Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
-    <icon platform="android" src="www/Android/drawable-xxxxhdpi/icon.png" density="xxxxhdpi"/>
+    <icon platform="android" src="Android/drawable-ldpi/icon.png" density="ldpi"/>
+    <icon platform="android" src="Android/drawable-mdpi/icon.png" density="mdpi"/>
+    <icon platform="android" src="Android/drawable-hdpi/icon.png" density="hdpi"/>
+    <icon platform="android" src="Android/drawable-xhdpi/icon.png" density="xhdpi"/>
+    <icon platform="android" src="Android/drawable-xxhdpi/icon.png" density="xxhdpi"/>
+    <icon platform="android" src="Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
+    <icon platform="android" src="Android/drawable-xxxxhdpi/icon.png" density="xxxxhdpi"/>
 
 <!--     iOS 7.0+ 
      iPhone / iPod Touch  
