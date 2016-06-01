@@ -6,7 +6,7 @@ var app =
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://192.168.1.7/testappserver/api/json/', //@todo: change it to the appropriate.
+    remote: 'http://appserver.wsvnb.nl/api/json/', //@todo: change it to the appropriate.
     api_page: 'pages',
     api_pagesum: 'pagesum',
     folder: 'wsnvbdata',
