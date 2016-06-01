@@ -29,31 +29,21 @@
     <icon platform="android" src="Android/drawable-xxxhdpi/icon.png" density="xxxhdpi"/>
     <icon platform="android" src="Android/drawable-xxxxhdpi/icon.png" density="xxxxhdpi"/>
 
-<!--     iOS 7.0+ 
-     iPhone / iPod Touch  
-    <icon src="icons/icon-60.png" width="60" height="60" />
-    <icon src="icons/icon-120.png" width="120" height="120" hint="iPhone4,5,6" />
-    <icon src="icons/icon-180.png" width="180" height="180" hint="iPhone6+" />
-     iPad 
-    <icon src="icons/icon-76.png" width="76" height="76" />
-    <icon src="icons/icon-152.png" width="152" height="152" />
-     iOS 6.1 
-     Spotlight Icon 
-    <icon src="icons/icon-40.png" width="40" height="40" />
-    <icon src="icons/icon-80.png" width="80" height="80" />
-     iPhone / iPod Touch 
-    <icon src="icons/icon-57.png" width="57" height="57" />
-    <icon src="icons/icon-114.png" width="114" height="114" />
-     iPad 
-    <icon src="icons/icon-72.png" width="72" height="72" />
-    <icon src="icons/icon-144.png" width="144" height="144" />
-     iPhone Spotlight and Settings Icon 
-    <icon src="icons/icon-29.png" width="29" height="29" />
-    <icon src="icons/icon-58.png" width="58" height="58" />
-     iPad Spotlight and Settings Icon 
-    <icon src="icons/icon-50.png" width="50" height="50" />
-    <icon src="icons/icon-100.png" width="100" height="100" />-->
-
+    <icon src="Ios/icon-60.png" width="60" height="60" />
+    <icon src="Ios/icon-120.png" width="120" height="120" hint="iPhone4,5,6" />
+    <icon src="Ios/icon-180.png" width="180" height="180" hint="iPhone6+" />
+    <icon src="Ios/icon-76.png" width="76" height="76" />
+    <icon src="Ios/icon-152.png" width="152" height="152" />
+    <icon src="Ios/icon-40.png" width="40" height="40" />
+    <icon src="Ios/icon-80.png" width="80" height="80" />
+    <icon src="Ios/icon-57.png" width="57" height="57" />
+    <icon src="Ios/icon-114.png" width="114" height="114" />
+    <icon src="Ios/icon-72.png" width="72" height="72" />
+    <icon src="Ios/icon-144.png" width="144" height="144" />
+    <icon src="Ios/icon-29.png" width="29" height="29" />
+    <icon src="Ios/icon-58.png" width="58" height="58" />
+    <icon src="Ios/icon-50.png" width="50" height="50" />
+    <icon src="Ios/icon-100.png" width="100" height="100" />
     
     <preference name="permissions" value="none" />
     <preference name="orientation" value="default" />
