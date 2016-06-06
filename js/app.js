@@ -1,22 +1,22 @@
 var app =
 {
-    refresh_interval: 0, //Millisceconds. 0 = disable
+    refresh_interval: 0, //Milliseconds. 0 = disable
     nav_count: 0,
     done: false,
     ready: false,
     lang: 'nl',
     state_online: null,
-    remote: 'http://appserver.wsvnb.nl/api/json/', //@todo: change it to the appropriate.
+    remote: 'http://appserver.wsvnb.nl/api/json/',
     api_page: 'pages',
     api_pagesum: 'pagesum',
-    folder: 'wsnvbdata',
+    folder: 'wsnvbapp',
     cacheFile: 'pages.json',
     initialize: function()
     {
         if(app.ready)
         {
-            console.log('Already ready. Back button was pressed to exit!');            
-            navigator.app.exitApp();
+            console.log('Already ready. Back button was pressed to exit!');
+            //navigator.app.exitApp();
         }
         else
         {
@@ -24,19 +24,30 @@ var app =
             app.bindEvents();
         }
     },
+    backButton: function(e)
+    {
+        if(app.activePage().is($('.page.homepage')))
+        {
+            console.log('Exit app; we are on the homepage..');
+            navigator.app.exitApp();
+        }
+        else 
+        {
+            console.log('Going back a page.');
+            navigator.app.backHistory();
+        }
+    },
     bindEvents: function()
     {
-        // Possible events: deviceready    pause    resume    backbutton    menubutton    searchbutton    startcallbutton    endcallbutton    volumedownbutton    volumeupbutton
+        document.addEventListener("backbutton", app.backButton);
+
         document.addEventListener('deviceready', app.initialized, false);
-        
-        //@see www/config.xml also!!
-        // org.apache.cordova.network-information: online offline
         document.addEventListener('online', app.onOnline, false);
         document.addEventListener('offline', app.onOffline, false);
         document.addEventListener('offlineswitch', app.offlineSwitch, false);
         document.addEventListener('onlineswitch', app.whenReady, false);
         document.addEventListener("resume", app.whenReady, false);
-        
+
         if(app.refresh_interval)
         {
             setInterval(function()
@@ -47,12 +58,12 @@ var app =
     },
     initialized: function()
     {
-        //Status bar fix for Apple
+        //Status bar fix for Apple with plugin...
         StatusBar.overlaysWebView(false);
         
         app.ready = true;
         
-        $('body').on('click', 'a.external', function()
+        $('body').on('click', 'a.external', function() //@todo: detect the external links automatically...
         {
             var url = $(this).attr('href');
             if(device.platform === 'Android')
@@ -73,10 +84,10 @@ var app =
             function (locale) 
             {
                 //Add the language when it is available.
-                app.lang = locale.value == 'nl-NL' ? 'nl' : 'en'; //@todo: cleaner solution.
+                app.lang = locale.value == 'nl-NL' ? 'nl' : 'en'; //@todo: find a good solution.
                 
-                app.api_page += '?lang=' + app.lang;
-                app.api_pagesum += '?lang=' + app.lang;
+                app.api_page += '?b64i=1&lang=' + app.lang;
+                app.api_pagesum += '?b64i=1&lang=' + app.lang;
             },
             function () {console.log('Language could not be detected!');}
         );
@@ -121,7 +132,7 @@ var app =
             }
             else
             {
-                //Just check for new contents again
+                //Just check for contents (again)
                 app.checkData();
             }
         }
@@ -137,14 +148,12 @@ var app =
         {
             if(!data || data === -1)
             {   //No data exists so download it now.
-                
-                if(data === -1) //File parsererror. Server bogus?
-                {
-                    //clear the crap
+                if(data === -1) //File parsererror. Server bogus last time?
+                {                    
                     console.log('Removing erroneous file: ' + cachefile_location);
                     fs.removeFile(cachefile_location);
                 }
-                app.completeRefresh();
+                app.completeRefresh(); //Retry downloading now!
                 return;
             }
            
@@ -180,7 +189,7 @@ var app =
     },
     excuseUs: function()
     {
-        console.log('(todo)');
+        console.log('(todo say sorry to the user / fix a bug on the serverside!)');
     },
     completeRefresh: function()
     {
@@ -227,21 +236,21 @@ var app =
     },
     setCss: function(css)
     {
-        console.log('Setting css');
         if(!css)
         {
             return;
         }
+        console.log('Setting css');
         $('#css_remote').remove();
         $('head').append('<style type="text/css" id="css_remote">' + css + '</style>');
     },
     setJs: function(js)
     {
-        console.log('Setting js');
         if(!js)
         {
             return;
         }
+        console.log('Setting js');
         $('#js_remote').remove();
         $('head').append('<script type="text/javascript" id="js_remote">' + js + '</script>');
     },
@@ -252,6 +261,46 @@ var app =
     changePage: function(page_id)
     {
         $('body').pagecontainer('change', page_id);
+    },
+    preProcessHtml: function()
+    {
+        $('.section_edit').each(function()
+        {
+            $(this).find('input, textarea, select').each(function()
+            {
+                var storagekey = 'inputstorage_' + $(this).attr('id');
+                var existing_value = localStorage.getItem(storagekey);
+                if(existing_value)
+                {
+                    console.log(1);
+                    $(this).val(existing_value);
+                }
+                console.log(2);
+                $(this).change(function()
+                {
+                    if(existing_value != $(this).val())
+                    {
+                        localStorage.setItem(storagekey, $(this).val());
+                    }
+                });
+            });
+            
+            $(this).find('input[type="date"]').change(function()
+            {
+                var nextOne = $(this).parent().parent().parent().next();
+                while(nextOne.length)
+                {
+                    nextOne.find('input[type="date"]').attr('min', $(this).val());
+                    nextOne = nextOne.next();
+                }
+//                var prevOne = $(this).parent().parent().parent().prev();
+//                while(prevOne.length)
+//                {
+//                    prevOne.find('input[type="date"]').attr('max', $(this).val());
+//                    prevOne = prevOne.prev();
+//                }
+            });
+        });
     },
     initJqueryMobile: function(pagedata)
     {
@@ -266,10 +315,12 @@ var app =
         $('.app').removeClass('initializing');
         $('.spinner').remove();
         $("[data-role='footer']").toolbar();    // Fix the footer :)
+        
+        app.preProcessHtml();
     },
     replacePageArticle: function(html)
     {
-        $('#' + app.activePage().attr('id') + ' article').html(html).trigger("create");
+        $('#' + app.activePage().attr('id') + ' article').html(html).trigger("create"); //retrigger jquery ui.
     },
     getHomepage: function()
     {
